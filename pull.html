@@ -1,0 +1,17 @@
+<!doctype html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Open in Drafts</title>
+<style>body{font:17px -apple-system,system-ui,sans-serif;margin:40px 16px;color:#222;background:#fff}a{color:#B42F23}</style>
+</head><body>
+<p>Opening the draft in Drafts&hellip;</p>
+<p><a id="go" href="#">Tap here if Drafts doesn't open.</a></p>
+<script>
+// OmniFocus only makes http(s) links tappable, so the Field Notes review task links here, and this page
+// hands over to Drafts' own URL scheme. It opens the draft and runs "Pull from Field Notes" on it.
+var uuid = new URLSearchParams(location.search).get("uuid") || "";
+var url = "drafts://x-callback-url/open?uuid=" + encodeURIComponent(uuid) +
+          "&action=" + encodeURIComponent("Pull from Field Notes");
+document.getElementById("go").href = url;
+if (uuid) location.href = url;
+</script>
+</body></html>
